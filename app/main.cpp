@@ -1,5 +1,30 @@
+#include <cstdlib>
+#include <exception>
 #include <iostream>
+#include <ostream>
+
+class HelloTriangleApplication {
+public:
+  void run() {
+    initVulkan();
+    mainLoop();
+    cleanup();
+  }
+
+private:
+  void initVulkan() {}
+  void mainLoop() {}
+  void cleanup() {}
+};
+
 int main() {
-  std::cout << "Hello world" << std::endl;
-  return 0;
+  HelloTriangleApplication app;
+
+  try {
+    app.run();
+  } catch (const std::exception &e) {
+    std::cerr << e.what() << std::endl;
+    return EXIT_FAILURE;
+  }
+  return EXIT_SUCCESS;
 }
